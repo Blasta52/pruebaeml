@@ -1,0 +1,44 @@
+<section class="login-page">
+  <div class="login-box">
+      <div class="login-logo">
+        <a href="http://www.eml.co/"><img src="./../assets/images/logoeml.png" alt="" class="mw"></a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">
+              Regístrate para iniciar sesión</p>
+          <form novalidate method="post" (submit)="login()" [formGroup]="form">
+            <div class="input-group mb-3">
+              <input formControlName="correo" type="email" class="form-control" placeholder="Email">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+              <p *ngIf="enviado && form.controls.correo.hasError('required')" class="text-danger w-100 mb-0" >Debes Ingresar Correo</p>
+              <p *ngIf="enviado && form.controls.correo.hasError('email')" class="text-danger w-100 mb-0" >Ingresa un Correo Valido</p>
+            </div>
+            <div class="input-group mb-3">
+              <input formControlName="contrasenia" type="password" class="form-control" placeholder="Password">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+              <p *ngIf="enviado && form.controls.contrasenia.hasError('required')" class="text-danger w-100 mb-0" >Debes Ingresar la Contraseña</p>
+              <p *ngIf="error != ''" class="text-danger w-100 mb-0" >{{ error }}</p>
+            </div>
+            <div class="row">
+              <!-- /.col -->
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block">INICIAR </button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    </div>
+</section>
