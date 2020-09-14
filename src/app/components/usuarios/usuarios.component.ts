@@ -12,6 +12,10 @@ export class UsuariosComponent implements OnInit {
 
   public Usuarios:any;
 
+  public IsLoading:boolean= false;
+
+  public userName = '-';
+  public email = '-';
 
 
 
@@ -23,17 +27,25 @@ export class UsuariosComponent implements OnInit {
 
       window.location.href = "/";
     }
-
+    this.userName = localStorage.getItem('fullname')
+    this.email = localStorage.getItem('Email')
     this.getUsuarios()
   }
   getUsuarios(): void {
 
+    this.IsLoading = true;
+
      this.service.getUsuarios().subscribe((response) => {
+
+      this.IsLoading = false;
 
      this.Usuarios = response;
 
     },
     (error) => {
+
+      this.IsLoading = false;
+
       if (error.status == 422)
       {
         this.error = error.error.message;
@@ -43,6 +55,13 @@ export class UsuariosComponent implements OnInit {
         this.error = "Hubo un error, por favor intente más tarde.";
       }
     });
+  }
+  Salir(){
+
+    localStorage.clear();
+
+    window.location.href = "/";
+
   }
 
 }

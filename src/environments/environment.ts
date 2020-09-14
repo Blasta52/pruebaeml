@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl:"http://localhost/APIEML/"
+  apiBaseUrl:"http://pruebas-k.esy.es/APIEML/"
 };
 
 /*
