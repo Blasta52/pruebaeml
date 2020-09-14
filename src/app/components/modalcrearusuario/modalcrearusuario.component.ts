@@ -10,9 +10,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ModalcrearusuarioComponent implements OnInit {
 
+  // Event emitter para reconsultar los usuarios en el componente usuarios
   @Output()
   public getUsers = new EventEmitter<any>();
 
+  // Se definen las variables a utilizar
   public form:FormGroup;
   public enviado:boolean = false;
   public error:string = "";
@@ -20,6 +22,7 @@ export class ModalcrearusuarioComponent implements OnInit {
 
   constructor(private service:UsuariosService) {
 
+    // Creamos el formulario
     this.form=new FormGroup({
 
       nombres: new FormControl("",[Validators.required]),
@@ -36,6 +39,7 @@ export class ModalcrearusuarioComponent implements OnInit {
 
   }
 
+  // función que valida el formulario y crea el usuario
   CrearUsuario(btnClose) {
 
     this.enviado = true;

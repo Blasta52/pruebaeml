@@ -1,7 +1,13 @@
 <?php 
-	
+
+	/*
+		HELPER DE BASE DE DATOS
+	*/
+
+	// Importa la configuración de la base de datos
 	require('./config/database.php');
-	
+
+	// Función que ejecuta los queries y devuelve el resultado
 	function query($consulta){
 		$conexion = getConnection();
 
@@ -21,6 +27,7 @@
 		return $result;
 	}
 
+	// Función para obtener la conexión a la base de datos
 	function getConnection(){
 		global $config;
 
@@ -31,6 +38,7 @@
 		return $conexion;
 	}
 
+	// Función para cerrar la conexión de la base de datos
 	function closeConnection($conexion){
 		mysqli_close($conexion);
 	}

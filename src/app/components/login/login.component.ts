@@ -9,16 +9,15 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  // Se definen las variables a utilizar
   public form:FormGroup;
-
   public error:string = "";
-
   public enviado:boolean = false;
 
   constructor(private service:LoginService) {
 
+    // Creamos el formulario
     this.form=new FormGroup({
-
       correo:new FormControl("prueba@eml.com",[Validators.required,Validators.email]),
       contrasenia:new FormControl("12345678",[Validators.required])
     });
@@ -26,12 +25,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // Validamos que no exista la sesión si existe redireccionamos al modulo de usuarios
     if (localStorage.getItem('token')){
 
       window.location.href = "/usuarios";
     }
   }
 
+  // Función que llama el servicio de iniciar sesión y valida el formulario
   login():void {
 
     this.enviado = true;

@@ -5,14 +5,9 @@ import {
   HttpHandler,
   HttpEvent,
 } from "@angular/common/http";
-import { PLATFORM_ID } from "@angular/core";
-import { isPlatformBrowser } from "@angular/common";
 
 import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
-
-import { ConfigService } from "../services/config.service";
-import { environment } from "../../environments/environment";
 
 @Injectable()
 export class InterceptorsInterceptor implements HttpInterceptor {
@@ -32,9 +27,10 @@ export class InterceptorsInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       (data) => data,
       catchError((err: any) => {
+
+        // Interceptamos las peticiones y si recibimos un 401 borramos la sesión y redireccionamos al home
         if (err.status == 401)
         { 
-
           alert("Su sesión ha expirado");
           localStorage.clear();
           window.location.href = "/";

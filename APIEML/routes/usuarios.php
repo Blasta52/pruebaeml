@@ -1,5 +1,5 @@
 <?php 
-
+	// Se definen las rutas del módulo de usuarios
 	$routes['GET_usuarios'] = 'usuarios/getUsuarios';
 	$routes['POST_crear-usuario'] = 'usuarios/crearUsuario';
 	$routes['POST_actualizar-usuario'] = 'usuarios/ActualizarUsuario';

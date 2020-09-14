@@ -18,13 +18,14 @@ export class UsuariosService {
   };
 
   constructor(private http: HttpClient) {}
-
+  // Función que llama el servicios para listar usuarios
   getUsuarios() {
 
     return this.http
       .get(environment.apiBaseUrl+"usuarios",this.httpOptions)
       .pipe(map((data) => data));
   }
+  // Función que llama el servicios para crear usuario
   CrearUsuario(nombres,apellidos,cedula,correo,telefono) {
 
     let form = new FormData();
@@ -40,6 +41,7 @@ export class UsuariosService {
       .post(environment.apiBaseUrl+"crear-usuario",form ,this.httpOptions)
       .pipe(map((data) => data));
   }
+  // Función que llama el servicios para actualizar usuario
   ActualizarUsuario(id,nombres,apellidos,cedula,correo,telefono) {
 
     let form = new FormData();
@@ -56,6 +58,7 @@ export class UsuariosService {
       .post(environment.apiBaseUrl+"actualizar-usuario",form ,this.httpOptions)
       .pipe(map((data) => data));
   }
+  // Función que llama el servicios para eliminar usuario
   DeleteUsuario(id){
 
     let form = new FormData();

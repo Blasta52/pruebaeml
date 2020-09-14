@@ -19,6 +19,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
+  // Función que llama el servicio login
   login(correo,contrasenia ) {
 
     let form = new FormData();
